@@ -12,11 +12,16 @@ namespace FizzBuzz
 
     public class thing
     {
+        private Predicate<int> _predicate;
+        private string _value;
+
         public string AppendValueToReturnValueIfConditionIsMet(int input, string returnValue, Predicate<int> predicate, string value)
         {
-            if (predicate(input))
+            _value = value;
+            _predicate = predicate;
+            if (_predicate(input))
             {
-                returnValue += value;
+                returnValue += _value;
             }
             return returnValue;
         }
