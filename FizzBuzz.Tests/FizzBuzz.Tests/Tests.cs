@@ -26,15 +26,30 @@
     {
         public string Convert(int input)
         {
-            if (input % 3 == 0)
+            if (ShouldReturnFizz(input))
             {
                 return "Fizz";
             }
-            if (input % 5 == 0)
+            if (ShouldReturnBuzz(input))
             {
                 return "Buzz";
             }
             return input.ToString();
+        }
+
+        private static bool ShouldReturnFizz(int input)
+        {
+            return AnyRemainders(input, 3);
+        }
+
+        private static bool ShouldReturnBuzz(int input)
+        {
+            return AnyRemainders(input, 5);
+        }
+
+        private static bool AnyRemainders(int leftOperand, int rightOperand)
+        {
+            return leftOperand % rightOperand == 0;
         }
     }
 }
