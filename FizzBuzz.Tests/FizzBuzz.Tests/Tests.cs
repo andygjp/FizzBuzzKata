@@ -14,6 +14,7 @@
         [InlineData(6, "Fizz")]
         [InlineData(9, "Fizz")]
         [InlineData(10, "Buzz")]
+        [InlineData(15, "FizzBuzz")]
         public void It_should_convert_it_to_expected_value(int input, string expected)
         {
             var sut = new Converter();
