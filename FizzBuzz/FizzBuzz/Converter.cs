@@ -2,7 +2,7 @@ namespace FizzBuzz
 {
     using System;
 
-    public class MathHelper
+    internal class MathHelper
     {
         public static bool AnyRemainders(int leftOperand, int rightOperand)
         {
@@ -10,20 +10,19 @@ namespace FizzBuzz
         }
     }
 
-    public class thing
+    internal class thing
     {
-        private Predicate<int> _predicate;
-        private string _value;
+        private readonly Predicate<int> _predicate;
+        private readonly string _value;
 
-        public thing(Func<int, bool> predicate, string value)
+        public thing(Predicate<int> predicate, string value)
         {
-            
+            _predicate = predicate;
+            _value = value;
         }
 
-        public string AppendValueToReturnValueIfConditionIsMet(int input, string returnValue, Predicate<int> predicate, string value)
+        public string AppendValueToReturnValueIfConditionIsMet(int input, string returnValue)
         {
-            _value = value;
-            _predicate = predicate;
             if (_predicate(input))
             {
                 returnValue += _value;
@@ -40,8 +39,8 @@ namespace FizzBuzz
         public string Convert(int input)
         {
             string returnValue = "";
-            returnValue = _fizzer.AppendValueToReturnValueIfConditionIsMet(input, returnValue, input1 => MathHelper.AnyRemainders(input1, 3), "Fizz");
-            returnValue = _buzzer.AppendValueToReturnValueIfConditionIsMet(input, returnValue, input2 => MathHelper.AnyRemainders(input2, 5), "Buzz");
+            returnValue = _fizzer.AppendValueToReturnValueIfConditionIsMet(input, returnValue);
+            returnValue = _buzzer.AppendValueToReturnValueIfConditionIsMet(input, returnValue);
             returnValue = SetReturnValueIfEmptyToInput(input, returnValue);
             return returnValue;
         }
