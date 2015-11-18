@@ -19,7 +19,7 @@
     {
         public string Convert(int input)
         {
-            throw new System.NotImplementedException();
+            return input.ToString();
         }
     }
 }
