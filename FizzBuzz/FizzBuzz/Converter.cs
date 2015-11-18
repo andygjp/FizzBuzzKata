@@ -29,26 +29,30 @@ namespace FizzBuzz
         }
     }
 
+    public class Fallback
+    {
+        public string SetReturnValueIfEmptyToInput(int input, string returnValue)
+        {
+            if (string.IsNullOrWhiteSpace(returnValue))
+            {
+                returnValue = input.ToString();
+            }
+            return returnValue;
+        }
+    }
+
     public class Converter
     {
         private readonly NumberToString _fizzer = new NumberToString("Fizz", 3);
         private readonly NumberToString _buzzer = new NumberToString("Buzz", 5);
+        private readonly Fallback _fallback = new Fallback();
 
         public string Convert(int input)
         {
             string returnValue = "";
             returnValue = _fizzer.Convert(input, returnValue);
             returnValue = _buzzer.Convert(input, returnValue);
-            returnValue = SetReturnValueIfEmptyToInput(input, returnValue);
-            return returnValue;
-        }
-
-        private static string SetReturnValueIfEmptyToInput(int input, string returnValue)
-        {
-            if (string.IsNullOrWhiteSpace(returnValue))
-            {
-                returnValue = input.ToString();
-            }
+            returnValue = _fallback.SetReturnValueIfEmptyToInput(input, returnValue);
             return returnValue;
         }
     }
