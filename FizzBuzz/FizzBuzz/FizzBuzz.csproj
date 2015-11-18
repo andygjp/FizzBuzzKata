@@ -40,7 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Buzzer.cs" />
     <Compile Include="Converter.cs" />
+    <Compile Include="Fallback.cs" />
+    <Compile Include="Fizzer.cs" />
+    <Compile Include="IConvert.cs" />
+    <Compile Include="MathHelper.cs" />
+    <Compile Include="NumberToString.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
