@@ -9,9 +9,15 @@ namespace FizzBuzz
         public string Convert(int input)
         {
             string returnValue = "";
-            returnValue = _fizzer.Convert(input, returnValue);
+            returnValue = ReturnValue(input, returnValue, _fizzer);
             returnValue = _buzzer.Convert(input, returnValue);
             returnValue = _fallback.Convert(input, returnValue);
+            return returnValue;
+        }
+
+        private string ReturnValue(int input, string returnValue, IConvert converter)
+        {
+            returnValue = converter.Convert(input, returnValue);
             return returnValue;
         }
     }
