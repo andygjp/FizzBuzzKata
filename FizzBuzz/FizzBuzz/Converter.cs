@@ -8,7 +8,12 @@ namespace FizzBuzz
         }
     }
 
-    internal class NumberToString
+    internal interface IConvert
+    {
+        string Convert(int input, string returnValue);
+    }
+
+    internal class NumberToString : IConvert
     {
         private readonly string _value;
         private readonly int _divisor;
@@ -29,7 +34,7 @@ namespace FizzBuzz
         }
     }
 
-    public class Fallback
+    internal class Fallback : IConvert
     {
         public string SetReturnValueIfEmptyToInput(int input, string returnValue)
         {
@@ -38,6 +43,11 @@ namespace FizzBuzz
                 returnValue = input.ToString();
             }
             return returnValue;
+        }
+
+        public string Convert(int input, string returnValue)
+        {
+            return SetReturnValueIfEmptyToInput(input, returnValue);
         }
     }
 
