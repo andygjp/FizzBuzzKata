@@ -36,18 +36,13 @@ namespace FizzBuzz
 
     internal class Fallback : IConvert
     {
-        private string SetReturnValueIfEmptyToInput(int input, string returnValue)
+        public string Convert(int input, string returnValue)
         {
             if (string.IsNullOrWhiteSpace(returnValue))
             {
                 returnValue = input.ToString();
             }
             return returnValue;
-        }
-
-        public string Convert(int input, string returnValue)
-        {
-            return SetReturnValueIfEmptyToInput(input, returnValue);
         }
     }
 
