@@ -27,15 +27,20 @@
     {
         public string Convert(int input)
         {
+            string returnValue = "";
             if (ShouldReturnFizz(input))
             {
-                return "Fizz";
+                returnValue += "Fizz";
             }
             if (ShouldReturnBuzz(input))
             {
-                return "Buzz";
+                returnValue += "Buzz";
             }
-            return input.ToString();
+            if (string.IsNullOrWhiteSpace(returnValue))
+            {
+                returnValue = input.ToString();
+            }
+            return returnValue;
         }
 
         private static bool ShouldReturnFizz(int input)
