@@ -13,17 +13,7 @@ namespace FizzBuzz
             return returnValue;
         }
 
-        public bool ShouldReturnFizz(int input)
-        {
-            return AnyRemainders(input, 3);
-        }
-
-        public bool ShouldReturnBuzz(int input)
-        {
-            return AnyRemainders(input, 5);
-        }
-
-        private bool AnyRemainders(int leftOperand, int rightOperand)
+        public bool AnyRemainders(int leftOperand, int rightOperand)
         {
             return leftOperand % rightOperand == 0;
         }
@@ -36,8 +26,8 @@ namespace FizzBuzz
         public string Convert(int input)
         {
             string returnValue = "";
-            returnValue = _thing.AppendValueToReturnValueIfConditionIsMet(input, returnValue, _thing.ShouldReturnFizz, "Fizz");
-            returnValue = _thing.AppendValueToReturnValueIfConditionIsMet(input, returnValue, _thing.ShouldReturnBuzz, "Buzz");
+            returnValue = _thing.AppendValueToReturnValueIfConditionIsMet(input, returnValue, input1 => _thing.AnyRemainders(input1, 3), "Fizz");
+            returnValue = _thing.AppendValueToReturnValueIfConditionIsMet(input, returnValue, input2 => _thing.AnyRemainders(input2, 5), "Buzz");
             returnValue = SetReturnValueIfEmptyToInput(input, returnValue);
             return returnValue;
         }
