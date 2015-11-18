@@ -27,7 +27,7 @@ namespace FizzBuzz
         }
     }
 
-    internal class NumberToString : IConvert
+    internal abstract class NumberToString : IConvert
     {
         private readonly string _value;
         private readonly int _divisor;
@@ -62,8 +62,8 @@ namespace FizzBuzz
 
     public class Converter
     {
-        private readonly NumberToString _fizzer = new NumberToString("Fizz", 3);
-        private readonly NumberToString _buzzer = new NumberToString("Buzz", 5);
+        private readonly NumberToString _fizzer = new Fizzer();
+        private readonly NumberToString _buzzer = new Buzzer();
         private readonly Fallback _fallback = new Fallback();
 
         public string Convert(int input)
