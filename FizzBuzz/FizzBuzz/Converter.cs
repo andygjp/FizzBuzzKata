@@ -13,6 +13,20 @@ namespace FizzBuzz
         string Convert(int input, string returnValue);
     }
 
+    internal class Fizzer : NumberToString
+    {
+        public Fizzer() : base("Fizz", 3)
+        {
+        }
+    }
+
+    internal class Buzzer : NumberToString
+    {
+        public Buzzer() : base("Buzz", 5)
+        {
+        }
+    }
+
     internal class NumberToString : IConvert
     {
         private readonly string _value;
