@@ -15,6 +15,11 @@ namespace FizzBuzz
         private Predicate<int> _predicate;
         private string _value;
 
+        public thing(Func<int, bool> predicate, string value)
+        {
+            
+        }
+
         public string AppendValueToReturnValueIfConditionIsMet(int input, string returnValue, Predicate<int> predicate, string value)
         {
             _value = value;
@@ -29,8 +34,8 @@ namespace FizzBuzz
 
     public class Converter
     {
-        private readonly thing _fizzer = new thing();
-        private readonly thing _buzzer = new thing();
+        private readonly thing _fizzer = new thing(input1 => MathHelper.AnyRemainders(input1, 3), "Fizz");
+        private readonly thing _buzzer = new thing(input2 => MathHelper.AnyRemainders(input2, 5), "Buzz");
 
         public string Convert(int input)
         {
