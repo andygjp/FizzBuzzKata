@@ -1,5 +1,6 @@
 ﻿namespace FizzBuzz.Tests
 {
+    using System;
     using FluentAssertions;
     using Xunit;
 
@@ -28,35 +29,26 @@
         public string Convert(int input)
         {
             string returnValue = "";
-            returnValue = Fizz(input, returnValue);
-            returnValue = Buzz(input, returnValue);
-            returnValue = Input(input, returnValue);
+            returnValue = AppendValueToReturnValueIfConditionIsMet(input, returnValue, ShouldReturnFizz, "Fizz");
+            returnValue = AppendValueToReturnValueIfConditionIsMet(input, returnValue, ShouldReturnBuzz, "Buzz");
+            returnValue = SetReturnValueIfEmptyToInput(input, returnValue);
             return returnValue;
         }
 
-        private static string Fizz(int input, string returnValue)
+        private static string AppendValueToReturnValueIfConditionIsMet(int input, string returnValue, Predicate<int> predicate, string value)
         {
-            if (ShouldReturnFizz(input))
+            if (predicate(input))
             {
-                returnValue += "Fizz";
+                returnValue += value;
             }
             return returnValue;
         }
 
-        private static string Buzz(int input, string returnValue)
-        {
-            if (ShouldReturnBuzz(input))
-            {
-                returnValue += "Buzz";
-            }
-            return returnValue;
-        }
-
-        private static string Input(int input, string returnValue)
+        private static string SetReturnValueIfEmptyToInput(int input, string returnValue)
         {
             if (string.IsNullOrWhiteSpace(returnValue))
             {
-                returnValue += input.ToString();
+                returnValue = input.ToString();
             }
             return returnValue;
         }
