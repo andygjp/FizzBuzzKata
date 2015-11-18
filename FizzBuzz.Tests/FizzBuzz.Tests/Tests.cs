@@ -10,7 +10,7 @@
         [InlineData(2, "2")]
         [InlineData(3, "Fizz")]
         [InlineData(4, "4")]
-        [InlineData(5, "5")]
+        [InlineData(5, "Buzz")]
         [InlineData(6, "Fizz")]
         [InlineData(9, "Fizz")]
         public void It_should_convert_it_to_expected_value(int input, string expected)
