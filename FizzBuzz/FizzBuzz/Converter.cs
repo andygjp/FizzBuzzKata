@@ -10,8 +10,8 @@ namespace FizzBuzz
         {
             string returnValue = "";
             returnValue = ReturnValue(input, returnValue, _fizzer);
-            returnValue = _buzzer.Convert(input, returnValue);
-            returnValue = _fallback.Convert(input, returnValue);
+            returnValue = ReturnValue(input, returnValue, _buzzer);
+            returnValue = ReturnValue(input, returnValue, _fallback);
             return returnValue;
         }
 
