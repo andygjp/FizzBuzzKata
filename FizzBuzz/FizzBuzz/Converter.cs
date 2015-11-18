@@ -16,13 +16,7 @@ namespace FizzBuzz
 
         public string Convert(int input)
         {
-            return _converters.Aggregate("", (current, converter) => ReturnValue(input, current, converter));
-        }
-
-        private string ReturnValue(int input, string returnValue, IConvert converter)
-        {
-            returnValue = converter.Convert(input, returnValue);
-            return returnValue;
+            return _converters.Aggregate("", (current, converter) => converter.Convert(input, current));
         }
     }
 }
