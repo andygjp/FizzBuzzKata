@@ -36,7 +36,7 @@ namespace FizzBuzz
 
     internal class Fallback : IConvert
     {
-        public string SetReturnValueIfEmptyToInput(int input, string returnValue)
+        private string SetReturnValueIfEmptyToInput(int input, string returnValue)
         {
             if (string.IsNullOrWhiteSpace(returnValue))
             {
@@ -62,7 +62,7 @@ namespace FizzBuzz
             string returnValue = "";
             returnValue = _fizzer.Convert(input, returnValue);
             returnValue = _buzzer.Convert(input, returnValue);
-            returnValue = _fallback.SetReturnValueIfEmptyToInput(input, returnValue);
+            returnValue = _fallback.Convert(input, returnValue);
             return returnValue;
         }
     }
