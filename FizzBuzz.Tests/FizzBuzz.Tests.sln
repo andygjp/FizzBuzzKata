@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FizzBuzz.Tests", "FizzBuzz.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FizzBuzz", "FizzBuzz\FizzBuzz.csproj", "{8AFB594C-EAC8-44A3-9001-C089E4055F71}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "source", "source", "{3C27E1B7-EBCD-4760-AA7B-6C817417C22F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{B3348E8C-5DF9-458A-99FD-EF17128CB197}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +28,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{AA6706E0-E1DB-43F4-B3E4-614E04F68214} = {B3348E8C-5DF9-458A-99FD-EF17128CB197}
+		{8AFB594C-EAC8-44A3-9001-C089E4055F71} = {3C27E1B7-EBCD-4760-AA7B-6C817417C22F}
 	EndGlobalSection
 EndGlobal
