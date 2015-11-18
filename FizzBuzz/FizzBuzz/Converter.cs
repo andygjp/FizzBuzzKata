@@ -9,9 +9,11 @@ namespace FizzBuzz
         public string Convert(int input)
         {
             string returnValue = "";
-            returnValue = ReturnValue(input, returnValue, _fizzer);
-            returnValue = ReturnValue(input, returnValue, _buzzer);
-            returnValue = ReturnValue(input, returnValue, _fallback);
+            var converters = new IConvert[] {_fizzer, _buzzer, _fallback};
+            foreach (var converter in converters)
+            {
+                returnValue = ReturnValue(input, returnValue, converter);
+            }
             return returnValue;
         }
 
