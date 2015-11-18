@@ -3,12 +3,23 @@
     using FluentAssertions;
     using Xunit;
 
-    public class Tests
+    public class When_I_supply_a_number
     {
-        [Fact]
-        public void x()
+        [Theory]
+        [InlineData(1, "1")]
+        public void It_should_convert_it_to_expected_value(int input, string expected)
         {
-            true.Should().BeTrue();
+            var sut = new Converter();
+            string actual = sut.Convert(input);
+            actual.Should().Be(expected);
+        }
+    }
+
+    public class Converter
+    {
+        public string Convert(int input)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
