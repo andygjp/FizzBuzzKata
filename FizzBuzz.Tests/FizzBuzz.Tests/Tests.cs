@@ -13,6 +13,7 @@
         [InlineData(5, "Buzz")]
         [InlineData(6, "Fizz")]
         [InlineData(9, "Fizz")]
+        [InlineData(10, "Buzz")]
         public void It_should_convert_it_to_expected_value(int input, string expected)
         {
             var sut = new Converter();
@@ -28,6 +29,10 @@
             if (input % 3 == 0)
             {
                 return "Fizz";
+            }
+            if (input % 5 == 0)
+            {
+                return "Buzz";
             }
             return input.ToString();
         }
