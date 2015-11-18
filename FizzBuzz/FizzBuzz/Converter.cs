@@ -25,7 +25,7 @@ namespace FizzBuzz
 
         public string AppendValueToReturnValueIfConditionIsMet(int input, string returnValue)
         {
-            if (_predicate(input))
+            if (MathHelper.AnyRemainders(input, _divisor))
             {
                 returnValue += _value;
             }
