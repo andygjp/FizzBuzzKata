@@ -28,17 +28,35 @@
         public string Convert(int input)
         {
             string returnValue = "";
+            returnValue = Fizz(input, returnValue);
+            returnValue = Buzz(input, returnValue);
+            returnValue = Input(input, returnValue);
+            return returnValue;
+        }
+
+        private static string Fizz(int input, string returnValue)
+        {
             if (ShouldReturnFizz(input))
             {
                 returnValue += "Fizz";
             }
+            return returnValue;
+        }
+
+        private static string Buzz(int input, string returnValue)
+        {
             if (ShouldReturnBuzz(input))
             {
                 returnValue += "Buzz";
             }
+            return returnValue;
+        }
+
+        private static string Input(int input, string returnValue)
+        {
             if (string.IsNullOrWhiteSpace(returnValue))
             {
-                returnValue = input.ToString();
+                returnValue += input.ToString();
             }
             return returnValue;
         }
