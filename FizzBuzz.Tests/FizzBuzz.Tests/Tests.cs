@@ -3,7 +3,7 @@
     using FluentAssertions;
     using Xunit;
 
-    public class When_I_supply_a_number
+    public class When_I_convert_a_normal_number
     {
         [Theory]
         [InlineData(1, "1")]
@@ -19,7 +19,7 @@
     {
         public string Convert(int input)
         {
-            throw new System.NotImplementedException();
+            return "1";
         }
     }
 }
