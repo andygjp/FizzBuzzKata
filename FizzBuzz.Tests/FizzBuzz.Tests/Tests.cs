@@ -98,6 +98,17 @@
         }
     }
 
+    public class When_I_convert_input_using_my_own_rule
+    {
+        [Fact]
+        public void It_should_convert_it_to_Fuzz()
+        {
+            var sut = new Converter();
+            string actual = sut.Convert(2);
+            actual.Should().Be("Fuzz");
+        }
+    }
+
     internal static class StringExtension
     {
         public static string DefaultIfNull(this string value)
