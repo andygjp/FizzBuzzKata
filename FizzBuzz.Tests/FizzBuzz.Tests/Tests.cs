@@ -182,14 +182,12 @@
     {
         private readonly RuleConverter[] _rules;
 
-        public Converter()
+        public Converter() : this(new RuleConverter[] { new Fizzer(), new Buzzer(), new Popper() })
         {
-            _rules = new RuleConverter[] {new Fizzer(), new Buzzer(), new Popper()};
         }
 
-        public Converter(RuleConverter customRule)
+        public Converter(RuleConverter customRule) : this(new[] { customRule })
         {
-            _rules = new[] {customRule};
         }
 
         public Converter(IEnumerable<RuleConverter> customRules)
