@@ -129,26 +129,26 @@
         }
     }
 
-    public abstract class RuleConverter
+    public class RuleConverter
     {
-        protected RuleConverter(string output, int divisor)
+        private readonly string _output;
+        private readonly int _divisor;
+
+        public RuleConverter(string output, int divisor)
         {
-            Output = output;
-            Divisor = divisor;
+            _output = output;
+            _divisor = divisor;
         }
 
         public string GetOutput(int input)
         {
-            return HasRemainders(input) ? Output : null;
+            return HasRemainders(input) ? _output : null;
         }
 
         private bool HasRemainders(int input)
         {
-            return input % Divisor == 0;
+            return input % _divisor == 0;
         }
-
-        protected string Output { get; set; }
-        protected int Divisor { get; set; }
     }
 
     public class Fizzer : CustomRule
@@ -176,8 +176,6 @@
     {
         public CustomRule(string output, int divisor) : base(output, divisor)
         {
-            Output = output;
-            Divisor = divisor;
         }
     }
 
