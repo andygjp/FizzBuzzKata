@@ -1,5 +1,6 @@
 ﻿namespace FizzBuzz.Tests
 {
+    using System.Collections.Generic;
     using System.Linq;
     using FluentAssertions;
     using Xunit;
@@ -114,7 +115,7 @@
         [Fact]
         public void It_should_convert_it_to_Fuzz()
         {
-            var sut = new Converter(new CustomRule("Fuzz", 2), new CustomRule("Bizz", 3));
+            var sut = new Converter(new RuleConverter[] {new CustomRule("Fuzz", 2), new CustomRule("Bizz", 3)});
             string actual = sut.Convert(6);
             actual.Should().Be("FuzzBizz");
         }
@@ -191,9 +192,9 @@
             _rules = new[] {customRule};
         }
 
-        public Converter(RuleConverter customRule, RuleConverter ruleConverter)
+        public Converter(IEnumerable<RuleConverter> customRules)
         {
-            _rules = new[] { customRule, ruleConverter };
+            _rules = customRules.ToArray();
         }
 
         public string Convert(int input)
