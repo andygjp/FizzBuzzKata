@@ -42,6 +42,17 @@
         }
     }
 
+    public class When_I_convert_a_multiple_of_three_and_five
+    {
+        [Fact]
+        public void It_should_convert_it_to_FizzBuzz()
+        {
+            var sut = new Converter();
+            string actual = sut.Convert(15);
+            actual.Should().Be("FizzBuzz");
+        }
+    }
+
     public class Converter
     {
         public string Convert(int input)
