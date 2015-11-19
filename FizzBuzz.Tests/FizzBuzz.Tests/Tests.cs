@@ -54,6 +54,17 @@
         }
     }
 
+    public class When_I_convert_a_multiple_of_seven
+    {
+        [Fact]
+        public void It_should_convert_it_to_Pop()
+        {
+            var sut = new Converter();
+            string actual = sut.Convert(7);
+            actual.Should().Be("Pop");
+        }
+    }
+
     internal static class StringExtension
     {
         public static string DefaultIfNull(this string value)
