@@ -88,7 +88,12 @@
     {
         public string Buzz(int input)
         {
-            return IsBuzzy(input) ? "Buzz" : null;
+            return IsBuzzy(input) ? GetOutput() : null;
+        }
+
+        protected string GetOutput()
+        {
+            return "Buzz";
         }
 
         private bool IsBuzzy(int input)
