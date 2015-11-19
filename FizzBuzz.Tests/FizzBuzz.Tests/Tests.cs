@@ -151,6 +151,11 @@
         }
     }
 
+    public class DefaultRules
+    {
+        public static RuleConverter[] Rules => new RuleConverter[] { new Fizzer(), new Buzzer(), new Popper() };
+    }
+
     public class Fizzer : RuleConverter
     {
         public Fizzer() : base("Fizz", 3)
@@ -176,7 +181,7 @@
     {
         private readonly RuleConverter[] _rules;
 
-        public Converter() : this(new RuleConverter[] { new Fizzer(), new Buzzer(), new Popper() })
+        public Converter() : this(DefaultRules.Rules)
         {
         }
 
