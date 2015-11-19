@@ -48,9 +48,14 @@
             return Fizz(input) ?? Buzz(input) ?? input.ToString();
         }
 
-        private string Buzz(int input)
+        private static string Buzz(int input)
         {
-            return null;
+            return IsBuzzy(input) ? "Buzz" : null;
+        }
+
+        private static bool IsBuzzy(int input)
+        {
+            return AnyRemainders(input, 5);
         }
 
         private static string Fizz(int input)
