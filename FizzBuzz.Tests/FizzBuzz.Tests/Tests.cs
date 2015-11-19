@@ -114,7 +114,7 @@
         [Fact]
         public void It_should_convert_it_to_Fuzz()
         {
-            var sut = new Converter(new CustomRule("Fuzz", 2));
+            var sut = new Converter(new CustomRule("Fuzz", 2), new CustomRule("Bizz", 3));
             string actual = sut.Convert(6);
             actual.Should().Be("FuzzBizz");
         }
@@ -189,6 +189,11 @@
         public Converter(RuleConverter customRule)
         {
             _rules = new[] {customRule};
+        }
+
+        public Converter(RuleConverter customRule, RuleConverter ruleConverter)
+        {
+            _rules = new[] { customRule, ruleConverter };
         }
 
         public string Convert(int input)
