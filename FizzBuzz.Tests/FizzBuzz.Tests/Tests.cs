@@ -72,7 +72,12 @@
 
         private bool HasRemainders(int input)
         {
-            return Helper.AnyRemainders(input, 3);
+            return Helper.AnyRemainders(input, Divisor);
+        }
+
+        private int Divisor
+        {
+            get { return 3; }
         }
     }
 
