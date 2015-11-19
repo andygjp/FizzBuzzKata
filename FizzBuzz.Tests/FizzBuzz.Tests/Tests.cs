@@ -75,10 +75,7 @@
             return Helper.AnyRemainders(input, Divisor);
         }
 
-        private int Divisor
-        {
-            get { return 3; }
-        }
+        protected abstract int Divisor { get; }
     }
 
     public class Fizzer : RuleConverter
@@ -86,6 +83,11 @@
         protected override string GetOutput()
         {
             return "Fizz";
+        }
+
+        protected override int Divisor
+        {
+            get { return 3; }
         }
     }
 
