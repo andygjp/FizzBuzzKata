@@ -20,6 +20,7 @@
     {
         [Theory]
         [InlineData(3)]
+        [InlineData(6)]
         public void It_should_convert_it_to_Fizz(int input)
         {
             var sut = new Converter();
