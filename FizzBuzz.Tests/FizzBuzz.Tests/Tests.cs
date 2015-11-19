@@ -1,7 +1,5 @@
 ﻿namespace FizzBuzz.Tests
 {
-    using System.Collections.Generic;
-    using System.Linq;
     using FluentAssertions;
     using Xunit;
 
@@ -118,79 +116,6 @@
             var sut = new Converter(new[] {new RuleConverter("Fuzz", 2), new RuleConverter("Bizz", 3)});
             string actual = sut.Convert(6);
             actual.Should().Be("FuzzBizz");
-        }
-    }
-
-    internal static class StringExtension
-    {
-        public static string DefaultIfNull(this string value)
-        {
-            return value.Length == 0 ? null : value;
-        }
-    }
-
-    public class RuleConverter
-    {
-        private readonly string _output;
-        private readonly int _divisor;
-
-        public RuleConverter(string output, int divisor)
-        {
-            _output = output;
-            _divisor = divisor;
-        }
-
-        public string GetOutput(int input)
-        {
-            return HasRemainders(input) ? _output : null;
-        }
-
-        private bool HasRemainders(int input)
-        {
-            return input % _divisor == 0;
-        }
-    }
-
-    public class DefaultRules
-    {
-        public static RuleConverter[] Rules => new[]
-        {
-            new RuleConverter("Fizz", 3),
-            new RuleConverter("Buzz", 5),
-            new RuleConverter("Pop", 7)
-        };
-    }
-
-    public class Converter
-    {
-        private readonly RuleConverter[] _rules;
-
-        public Converter() : this(DefaultRules.Rules)
-        {
-        }
-
-        public Converter(RuleConverter customRule) : this(new[] { customRule })
-        {
-        }
-
-        public Converter(IEnumerable<RuleConverter> customRules)
-        {
-            _rules = customRules.ToArray();
-        }
-
-        public string Convert(int input)
-        {
-            return ConvertUsingRules(input) ?? input.ToString();
-        }
-
-        private string ConvertUsingRules(int input)
-        {
-            return AggregateRules(input).DefaultIfNull();
-        }
-
-        private string AggregateRules(int input)
-        {
-            return _rules.Select(x => x.GetOutput(input)).Aggregate("", string.Concat);
         }
     }
 }
