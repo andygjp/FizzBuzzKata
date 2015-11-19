@@ -63,32 +63,25 @@
 
     public abstract class RuleConverter
     {
-        protected abstract string GetOutput();
+        protected abstract string Output { get; }
+        protected abstract int Divisor { get; }
 
         public string GetOutput(int input)
         {
-            return HasRemainders(input) ? GetOutput() : null;
+            return HasRemainders(input) ? Output : null;
         }
 
         private bool HasRemainders(int input)
         {
             return Helper.AnyRemainders(input, Divisor);
         }
-
-        protected abstract int Divisor { get; }
     }
 
     public class Fizzer : RuleConverter
     {
-        protected override string GetOutput()
-        {
-            return "Fizz";
-        }
+        protected override string Output => "Fizz";
 
-        protected override int Divisor
-        {
-            get { return 3; }
-        }
+        protected override int Divisor => 3;
     }
 
     public class Buzzer
