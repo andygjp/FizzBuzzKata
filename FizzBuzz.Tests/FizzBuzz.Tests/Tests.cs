@@ -103,13 +103,20 @@
         protected override int Divisor => 5;
     }
 
+    public class Popper : RuleConverter
+    {
+        protected override string Output => "Pop";
+
+        protected override int Divisor => 7;
+    }
+
     public class Converter
     {
         private readonly RuleConverter[] _rules;
 
         public Converter()
         {
-            _rules = new RuleConverter[] {new Fizzer(), new Buzzer()};
+            _rules = new RuleConverter[] {new Fizzer(), new Buzzer(), new Popper()};
         }
 
         public string Convert(int input)
