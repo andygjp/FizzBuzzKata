@@ -1,5 +1,6 @@
 ﻿namespace FizzBuzz.Tests
 {
+    using System.Linq;
     using FluentAssertions;
     using Xunit;
 
@@ -103,6 +104,8 @@
 
         private string ConvertUsingRules(int input)
         {
+            var rules = new RuleConverter[] {_fizzer, _buzzer};
+            return rules.Aggregate("", (current, x) => current + x.GetOutput(input)).DefaultIfNull();
             return (_fizzer.GetOutput(input) + _buzzer.GetOutput(input)).DefaultIfNull();
         }
     }
