@@ -73,7 +73,7 @@
 
         private bool HasRemainders(int input)
         {
-            return Helper.AnyRemainders(input, Divisor);
+            return input % Divisor == 0;
         }
     }
 
@@ -104,14 +104,6 @@
         private string FizzBuzz(int input)
         {
             return (_fizzer.GetOutput(input) + _buzzer.GetOutput(input)).DefaultIfNull();
-        }
-    }
-
-    internal static class Helper
-    {
-        public static bool AnyRemainders(int input, int divisor)
-        {
-            return input % divisor == 0;
         }
     }
 }
