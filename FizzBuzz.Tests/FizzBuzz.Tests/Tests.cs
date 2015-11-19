@@ -104,7 +104,7 @@
         [Fact]
         public void It_should_convert_it_to_Fuzz()
         {
-            var sut = new Converter(new CustomRule("Fuzz", 2));
+            var sut = new Converter(new RuleConverter("Fuzz", 2));
             string actual = sut.Convert(2);
             actual.Should().Be("Fuzz");
         }
@@ -115,7 +115,7 @@
         [Fact]
         public void It_should_convert_it_to_Fuzz()
         {
-            var sut = new Converter(new RuleConverter[] {new CustomRule("Fuzz", 2), new CustomRule("Bizz", 3)});
+            var sut = new Converter(new[] {new RuleConverter("Fuzz", 2), new RuleConverter("Bizz", 3)});
             string actual = sut.Convert(6);
             actual.Should().Be("FuzzBizz");
         }
@@ -151,30 +151,23 @@
         }
     }
 
-    public class Fizzer : CustomRule
+    public class Fizzer : RuleConverter
     {
         public Fizzer() : base("Fizz", 3)
         {
         }
     }
 
-    public class Buzzer : CustomRule
+    public class Buzzer : RuleConverter
     {
         public Buzzer() : base("Buzz", 5)
         {
         }
     }
 
-    public class Popper : CustomRule
+    public class Popper : RuleConverter
     {
         public Popper() : base("Pop", 7)
-        {
-        }
-    }
-
-    public class CustomRule : RuleConverter
-    {
-        public CustomRule(string output, int divisor) : base(output, divisor)
         {
         }
     }
