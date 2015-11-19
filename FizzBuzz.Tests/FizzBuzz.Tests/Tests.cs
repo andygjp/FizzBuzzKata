@@ -94,8 +94,12 @@
 
     public class Converter
     {
-        private readonly RuleConverter _fizzer = new Fizzer();
-        private readonly RuleConverter _buzzer = new Buzzer();
+        private readonly RuleConverter[] _rules;
+
+        public Converter()
+        {
+            _rules = new RuleConverter[] {new Fizzer(), new Buzzer()};
+        }
 
         public string Convert(int input)
         {
@@ -104,8 +108,17 @@
 
         private string ConvertUsingRules(int input)
         {
-            var rules = new RuleConverter[] {_fizzer, _buzzer};
-            return rules.Aggregate("", (current, x) => current + x.GetOutput(input)).DefaultIfNull();
+            return AggregateRules(input).DefaultIfNull();
+        }
+
+        private string AggregateRules(int input)
+        {
+            return _rules.Aggregate("", (current, x) => AppendRuleOutput(input, current, x));
+        }
+
+        private static string AppendRuleOutput(int input, string current, RuleConverter rule)
+        {
+            return current + rule.GetOutput(input);
         }
     }
 }
