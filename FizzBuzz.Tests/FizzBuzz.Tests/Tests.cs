@@ -42,7 +42,7 @@
 
         private static bool IsFizzy(int input)
         {
-            return input == 3;
+            return input % 3 == 0;
         }
     }
 }
