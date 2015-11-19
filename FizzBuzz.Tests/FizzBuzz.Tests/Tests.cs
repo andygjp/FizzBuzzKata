@@ -53,6 +53,14 @@
         }
     }
 
+    internal static class StringExtension
+    {
+        public static string DefaultIfNull(this string value)
+        {
+            return value.Length == 0 ? null : value;
+        }
+    }
+
     public class Converter
     {
         public string Convert(int input)
@@ -62,13 +70,7 @@
 
         private static string FizzBuzz(int input)
         {
-            var fizzBuzz = Fizz(input) + Buzz(input);
-            return DefaultIfNull(fizzBuzz);
-        }
-
-        private static string DefaultIfNull(string value)
-        {
-            return value.Length == 0 ? null : value;
+            return (Fizz(input) + Buzz(input)).DefaultIfNull();
         }
 
         private static string Buzz(int input)
