@@ -153,28 +153,12 @@
 
     public class DefaultRules
     {
-        public static RuleConverter[] Rules => new RuleConverter[] { new Fizzer(), new Buzzer(), new Popper() };
-    }
-
-    public class Fizzer : RuleConverter
-    {
-        public Fizzer() : base("Fizz", 3)
+        public static RuleConverter[] Rules => new[]
         {
-        }
-    }
-
-    public class Buzzer : RuleConverter
-    {
-        public Buzzer() : base("Buzz", 5)
-        {
-        }
-    }
-
-    public class Popper : RuleConverter
-    {
-        public Popper() : base("Pop", 7)
-        {
-        }
+            new RuleConverter("Fizz", 3),
+            new RuleConverter("Buzz", 5),
+            new RuleConverter("Pop", 7)
+        };
     }
 
     public class Converter
