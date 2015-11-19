@@ -29,6 +29,18 @@
         }
     }
 
+    public class When_I_convert_a_multiple_of_five
+    {
+        [Theory]
+        [InlineData(5)]
+        public void It_should_convert_it_to_Buzz(int input)
+        {
+            var sut = new Converter();
+            string actual = sut.Convert(input);
+            actual.Should().Be("Buzz");
+        }
+    }
+
     public class Converter
     {
         public string Convert(int input)
