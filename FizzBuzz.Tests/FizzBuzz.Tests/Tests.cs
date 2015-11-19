@@ -63,18 +63,18 @@
 
     public class Fizzer
     {
-        public string Fizz(int input)
+        public string GetOutput(int input)
         {
-            return IsFizzy(input) ? "Fizz" : null;
+            return HasRemainders(input) ? "Fizz" : null;
         }
 
-        private bool IsFizzy(int input)
+        private bool HasRemainders(int input)
         {
             return Helper.AnyRemainders(input, 3);
         }
     }
 
-    public class Buzer
+    public class Buzzer
     {
         public string Buzz(int input)
         {
@@ -90,7 +90,7 @@
     public class Converter
     {
         private readonly Fizzer _fizzer = new Fizzer();
-        private readonly Buzer _buzer = new Buzer();
+        private readonly Buzzer _buzzer = new Buzzer();
 
         public string Convert(int input)
         {
@@ -99,7 +99,7 @@
 
         private string FizzBuzz(int input)
         {
-            return (_fizzer.Fizz(input) + _buzer.Buzz(input)).DefaultIfNull();
+            return (_fizzer.GetOutput(input) + _buzzer.Buzz(input)).DefaultIfNull();
         }
     }
 
