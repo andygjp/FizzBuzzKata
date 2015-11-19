@@ -16,6 +16,18 @@
         }
     }
 
+    public class When_I_convert_a_multiple_of_three
+    {
+        [Theory]
+        [InlineData(3)]
+        public void It_should_convert_it_to_Fizz(int input)
+        {
+            var sut = new Converter();
+            string actual = sut.Convert(input);
+            actual.Should().Be("Fizz");
+        }
+    }
+
     public class Converter
     {
         public string Convert(int input)
