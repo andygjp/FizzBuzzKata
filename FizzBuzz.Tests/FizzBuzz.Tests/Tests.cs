@@ -93,15 +93,15 @@
 
     public class Converter
     {
-        private readonly Fizzer _fizzer = new Fizzer();
-        private readonly Buzzer _buzzer = new Buzzer();
+        private readonly RuleConverter _fizzer = new Fizzer();
+        private readonly RuleConverter _buzzer = new Buzzer();
 
         public string Convert(int input)
         {
-            return FizzBuzz(input) ?? input.ToString();
+            return ConvertUsingRules(input) ?? input.ToString();
         }
 
-        private string FizzBuzz(int input)
+        private string ConvertUsingRules(int input)
         {
             return (_fizzer.GetOutput(input) + _buzzer.GetOutput(input)).DefaultIfNull();
         }
