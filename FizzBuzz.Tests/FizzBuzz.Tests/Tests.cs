@@ -65,6 +65,17 @@
         }
     }
 
+    public class When_I_convert_a_multiple_of_three_and_seven
+    {
+        [Fact]
+        public void It_should_convert_it_to_FizzBuzz()
+        {
+            var sut = new Converter();
+            string actual = sut.Convert(21);
+            actual.Should().Be("FizzPop");
+        }
+    }
+
     internal static class StringExtension
     {
         public static string DefaultIfNull(this string value)
