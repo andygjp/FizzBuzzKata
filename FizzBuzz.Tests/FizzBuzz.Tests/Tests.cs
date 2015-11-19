@@ -63,11 +63,12 @@
         private static string FizzBuzz(int input)
         {
             var fizzBuzz = Fizz(input) + Buzz(input);
-            if (fizzBuzz.Length == 0)
-            {
-                return null;
-            }
-            return fizzBuzz;
+            return DefaultIfNull(fizzBuzz);
+        }
+
+        private static string DefaultIfNull(string value)
+        {
+            return value.Length == 0 ? null : value;
         }
 
         private static string Buzz(int input)
