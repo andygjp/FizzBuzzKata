@@ -64,23 +64,23 @@
     public abstract class RuleConverter
     {
         protected abstract string GetOutput();
-    }
 
-    public class Fizzer : RuleConverter
-    {
         public string GetOutput(int input)
         {
             return HasRemainders(input) ? GetOutput() : null;
         }
 
-        protected override string GetOutput()
-        {
-            return "Fizz";
-        }
-
         private bool HasRemainders(int input)
         {
             return Helper.AnyRemainders(input, 3);
+        }
+    }
+
+    public class Fizzer : RuleConverter
+    {
+        protected override string GetOutput()
+        {
+            return "Fizz";
         }
     }
 
