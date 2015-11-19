@@ -86,7 +86,7 @@
 
     public class Buzzer
     {
-        public string Buzz(int input)
+        public string GetOutput(int input)
         {
             return IsBuzzy(input) ? GetOutput() : null;
         }
@@ -114,7 +114,7 @@
 
         private string FizzBuzz(int input)
         {
-            return (_fizzer.GetOutput(input) + _buzzer.Buzz(input)).DefaultIfNull();
+            return (_fizzer.GetOutput(input) + _buzzer.GetOutput(input)).DefaultIfNull();
         }
     }
 
