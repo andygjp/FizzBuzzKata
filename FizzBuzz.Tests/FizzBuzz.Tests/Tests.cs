@@ -88,18 +88,17 @@
     {
         public string GetOutput(int input)
         {
-            return IsBuzzy(input) ? GetOutput() : null;
+            return IsBuzzy(input) ? Output : null;
         }
 
-        protected string GetOutput()
-        {
-            return "Buzz";
-        }
+        protected string Output => "Buzz";
 
         private bool IsBuzzy(int input)
         {
-            return Helper.AnyRemainders(input, 5);
+            return Helper.AnyRemainders(input, Divisor);
         }
+
+        protected int Divisor => 5;
     }
 
     public class Converter
