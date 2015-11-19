@@ -61,14 +61,19 @@
         }
     }
 
-    public class Fizzer
+    public abstract class RuleConverter
+    {
+        protected abstract string GetOutput();
+    }
+
+    public class Fizzer : RuleConverter
     {
         public string GetOutput(int input)
         {
             return HasRemainders(input) ? GetOutput() : null;
         }
 
-        private string GetOutput()
+        protected override string GetOutput()
         {
             return "Fizz";
         }
