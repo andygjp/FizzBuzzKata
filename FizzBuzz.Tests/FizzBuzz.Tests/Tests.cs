@@ -113,12 +113,7 @@
 
         private string AggregateRules(int input)
         {
-            return _rules.Aggregate("", (current, x) => AppendRuleOutput(input, current, x));
-        }
-
-        private static string AppendRuleOutput(int input, string current, RuleConverter rule)
-        {
-            return current + rule.GetOutput(input);
+            return _rules.Select(x => x.GetOutput(input)).Aggregate("", string.Concat);
         }
     }
 }
