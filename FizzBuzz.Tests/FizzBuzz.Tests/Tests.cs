@@ -33,16 +33,22 @@
     {
         public string Convert(int input)
         {
-            if (IsFizzy(input))
-            {
-                return "Fizz";
-            }
-            return input.ToString();
+            return Fizz(input) ?? input.ToString();
+        }
+
+        private static string Fizz(int input)
+        {
+            return IsFizzy(input) ? "Fizz" : null;
         }
 
         private static bool IsFizzy(int input)
         {
-            return input % 3 == 0;
+            return AnyRemainders(input, 3);
+        }
+
+        private static bool AnyRemainders(int input, int divisor)
+        {
+            return input % divisor == 0;
         }
     }
 }
