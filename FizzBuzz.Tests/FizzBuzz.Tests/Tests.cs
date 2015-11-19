@@ -103,7 +103,7 @@
         [Fact]
         public void It_should_convert_it_to_Fuzz()
         {
-            var sut = new Converter();
+            var sut = new Converter(new CustomRule("Fuzz", 2));
             string actual = sut.Convert(2);
             actual.Should().Be("Fuzz");
         }
@@ -154,6 +154,18 @@
         protected override int Divisor => 7;
     }
 
+    public class CustomRule : RuleConverter
+    {
+        public CustomRule(string output, int divisor)
+        {
+            Output = output;
+            Divisor = divisor;
+        }
+
+        protected override string Output { get; }
+        protected override int Divisor { get; }
+    }
+
     public class Converter
     {
         private readonly RuleConverter[] _rules;
@@ -161,6 +173,11 @@
         public Converter()
         {
             _rules = new RuleConverter[] {new Fizzer(), new Buzzer(), new Popper()};
+        }
+
+        public Converter(RuleConverter customRule)
+        {
+            _rules = new[] {customRule};
         }
 
         public string Convert(int input)
