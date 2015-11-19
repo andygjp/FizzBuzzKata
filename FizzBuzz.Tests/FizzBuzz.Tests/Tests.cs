@@ -74,9 +74,23 @@
         }
     }
 
+    public class Buzer
+    {
+        public string Buzz(int input)
+        {
+            return IsBuzzy(input) ? "Buzz" : null;
+        }
+
+        private bool IsBuzzy(int input)
+        {
+            return Helper.AnyRemainders(input, 5);
+        }
+    }
+
     public class Converter
     {
         private readonly Fizzer _fizzer = new Fizzer();
+        private readonly Buzer _buzer = new Buzer();
 
         public string Convert(int input)
         {
@@ -85,17 +99,7 @@
 
         private string FizzBuzz(int input)
         {
-            return (_fizzer.Fizz(input) + Buzz(input)).DefaultIfNull();
-        }
-
-        private static string Buzz(int input)
-        {
-            return IsBuzzy(input) ? "Buzz" : null;
-        }
-
-        private static bool IsBuzzy(int input)
-        {
-            return Helper.AnyRemainders(input, 5);
+            return (_fizzer.Fizz(input) + _buzer.Buzz(input)).DefaultIfNull();
         }
     }
 
