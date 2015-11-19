@@ -84,21 +84,11 @@
         protected override int Divisor => 3;
     }
 
-    public class Buzzer
+    public class Buzzer : RuleConverter
     {
-        public string GetOutput(int input)
-        {
-            return IsBuzzy(input) ? Output : null;
-        }
+        protected override string Output => "Buzz";
 
-        protected string Output => "Buzz";
-
-        private bool IsBuzzy(int input)
-        {
-            return Helper.AnyRemainders(input, Divisor);
-        }
-
-        protected int Divisor => 5;
+        protected override int Divisor => 5;
     }
 
     public class Converter
