@@ -131,9 +131,6 @@
 
     public abstract class RuleConverter
     {
-        protected abstract string Output { get; }
-        protected abstract int Divisor { get; }
-
         public string GetOutput(int input)
         {
             return HasRemainders(input) ? Output : null;
@@ -143,6 +140,9 @@
         {
             return input % Divisor == 0;
         }
+
+        protected string Output { get; set; }
+        protected int Divisor { get; set; }
     }
 
     public class Fizzer : CustomRule
@@ -173,9 +173,6 @@
             Output = output;
             Divisor = divisor;
         }
-
-        protected override string Output { get; }
-        protected override int Divisor { get; }
     }
 
     public class Converter
