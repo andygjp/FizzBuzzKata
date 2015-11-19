@@ -65,7 +65,12 @@
     {
         public string GetOutput(int input)
         {
-            return HasRemainders(input) ? "Fizz" : null;
+            return HasRemainders(input) ? GetOutput() : null;
+        }
+
+        private string GetOutput()
+        {
+            return "Fizz";
         }
 
         private bool HasRemainders(int input)
