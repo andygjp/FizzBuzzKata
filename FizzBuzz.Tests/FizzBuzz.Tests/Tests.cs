@@ -45,7 +45,12 @@
     {
         public string Convert(int input)
         {
-            return Fizz(input) ?? input.ToString();
+            return Fizz(input) ?? Buzz(input) ?? input.ToString();
+        }
+
+        private string Buzz(int input)
+        {
+            return null;
         }
 
         private static string Fizz(int input)
