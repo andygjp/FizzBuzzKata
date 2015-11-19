@@ -145,25 +145,25 @@
         }
     }
 
-    public class Fizzer : RuleConverter
+    public class Fizzer : CustomRule
     {
-        protected override string Output => "Fizz";
-
-        protected override int Divisor => 3;
+        public Fizzer() : base("Fizz", 3)
+        {
+        }
     }
 
-    public class Buzzer : RuleConverter
+    public class Buzzer : CustomRule
     {
-        protected override string Output => "Buzz";
-
-        protected override int Divisor => 5;
+        public Buzzer() : base("Buzz", 5)
+        {
+        }
     }
 
-    public class Popper : RuleConverter
+    public class Popper : CustomRule
     {
-        protected override string Output => "Pop";
-
-        protected override int Divisor => 7;
+        public Popper() : base("Pop", 7)
+        {
+        }
     }
 
     public class CustomRule : RuleConverter
