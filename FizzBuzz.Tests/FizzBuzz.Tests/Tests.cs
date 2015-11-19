@@ -33,6 +33,7 @@
     {
         [Theory]
         [InlineData(5)]
+        [InlineData(10)]
         public void It_should_convert_it_to_Buzz(int input)
         {
             var sut = new Converter();
