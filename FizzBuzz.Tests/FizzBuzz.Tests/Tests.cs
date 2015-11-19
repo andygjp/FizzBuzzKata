@@ -131,6 +131,12 @@
 
     public abstract class RuleConverter
     {
+        protected RuleConverter(string output, int divisor)
+        {
+            Output = output;
+            Divisor = divisor;
+        }
+
         public string GetOutput(int input)
         {
             return HasRemainders(input) ? Output : null;
@@ -168,7 +174,7 @@
 
     public class CustomRule : RuleConverter
     {
-        public CustomRule(string output, int divisor)
+        public CustomRule(string output, int divisor) : base(output, divisor)
         {
             Output = output;
             Divisor = divisor;
