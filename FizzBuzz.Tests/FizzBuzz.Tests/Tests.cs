@@ -32,11 +32,16 @@
     {
         public string Convert(int input)
         {
-            if (input == 3)
+            if (IsFizzy(input))
             {
                 return "Fizz";
             }
             return input.ToString();
+        }
+
+        private static bool IsFizzy(int input)
+        {
+            return input == 3;
         }
     }
 }
