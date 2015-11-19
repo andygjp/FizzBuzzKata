@@ -61,16 +61,31 @@
         }
     }
 
+    public class Fizzer
+    {
+        public string Fizz(int input)
+        {
+            return IsFizzy(input) ? "Fizz" : null;
+        }
+
+        private bool IsFizzy(int input)
+        {
+            return Helper.AnyRemainders(input, 3);
+        }
+    }
+
     public class Converter
     {
+        private readonly Fizzer _fizzer = new Fizzer();
+
         public string Convert(int input)
         {
             return FizzBuzz(input) ?? input.ToString();
         }
 
-        private static string FizzBuzz(int input)
+        private string FizzBuzz(int input)
         {
-            return (Fizz(input) + Buzz(input)).DefaultIfNull();
+            return (_fizzer.Fizz(input) + Buzz(input)).DefaultIfNull();
         }
 
         private static string Buzz(int input)
@@ -80,20 +95,13 @@
 
         private static bool IsBuzzy(int input)
         {
-            return AnyRemainders(input, 5);
+            return Helper.AnyRemainders(input, 5);
         }
+    }
 
-        private static string Fizz(int input)
-        {
-            return IsFizzy(input) ? "Fizz" : null;
-        }
-
-        private static bool IsFizzy(int input)
-        {
-            return AnyRemainders(input, 3);
-        }
-
-        private static bool AnyRemainders(int input, int divisor)
+    internal static class Helper
+    {
+        public static bool AnyRemainders(int input, int divisor)
         {
             return input % divisor == 0;
         }
