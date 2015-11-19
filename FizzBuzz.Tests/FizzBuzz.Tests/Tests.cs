@@ -76,6 +76,17 @@
         }
     }
 
+    public class When_I_convert_a_multiple_of_five_and_seven
+    {
+        [Fact]
+        public void It_should_convert_it_to_FizzBuzz()
+        {
+            var sut = new Converter();
+            string actual = sut.Convert(35);
+            actual.Should().Be("BuzzPop");
+        }
+    }
+
     internal static class StringExtension
     {
         public static string DefaultIfNull(this string value)
